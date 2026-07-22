@@ -1,0 +1,13 @@
+# 全站默认允许爬取, 但对"隐藏区"做定向 Disallow.
+#   - /lab/*                  : Lab 隐藏页 (面经列表 / 归纳汇总 / PDF 预览)
+#   - /blogs/interview-notes/ : 面经归纳 md (frontmatter.hidden=true 的文章)
+#   - /interview-pdfs/        : 面经 PDF 原件, 不希望被 Google Scholar / 图片搜索索引
+#
+# 注: robots.txt 是"君子协议", 只对遵守协议的爬虫有效. 结合以下多层措施提升隐蔽度:
+#   1. 页面 <head> 注入 <meta name="robots" content="noindex,nofollow"> (见 client.js)
+#   2. Lab 入口默认 CSS 隐藏, 走 Konami 打字 'sanki' 5 键解锁
+#   3. hidden: true 的文章不进 timeline / categories / tags 列表
+User-agent: *
+Disallow: /lab/
+Disallow: /blogs/interview-notes/
+Disallow: /interview-pdfs/
